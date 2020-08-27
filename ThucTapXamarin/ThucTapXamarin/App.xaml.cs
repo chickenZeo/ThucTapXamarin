@@ -10,7 +10,7 @@ namespace ThucTapXamarin
         {
             InitializeComponent();
 
-            MainPage = new Greeter();
+            MainPage = new GridExercise2();
         }
 
         protected override void OnStart()
