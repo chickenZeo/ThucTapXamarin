@@ -1,0 +1,32 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage Padding="20"
+             xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="ThucTapXamarin.QuotesPage">
+    <StackLayout >
+        <StackLayout.Padding>
+            <OnPlatform x:TypeArguments="Thickness">
+                <On Platform="Android" Value="20,30,20,20"/>
+                <On Platform="Window" Value="20,40,20,20"/>
+            </OnPlatform>
+        </StackLayout.Padding>
+        <Button Text="Next"
+                BackgroundColor="Snow"
+                TextColor="DeepSkyBlue"
+                Clicked="OnNextBtnClicked"
+                HorizontalOptions="Center"/>
+        <Label  BindingContext="{x:Reference slider}"
+                Text="{Binding Value,
+                       StringFormat='Font size: {0:N0}'}"
+                FontSize="20"
+                HeightRequest="25"/>
+        <Slider Maximum="50"
+                Minimum="16"
+                BackgroundColor="ForestGreen"
+                x:Name="slider"/>
+        <Label Text=""
+               x:Name="content"
+               FontSize="{Binding Source={x:Reference slider},
+               Path=Value}"/>
+    </StackLayout>
+</ContentPage>
