@@ -1,0 +1,26 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="ThucTapXamarin.Greeter">
+    
+    
+    <StackLayout BindingContext="{x:Reference slider}"
+                 HorizontalOptions="Fill">
+        <StackLayout.Padding>
+            <OnPlatform x:TypeArguments="Thickness">
+                <On Platform="iOS" Value="0,20,0,0"/>
+                <On Platform="Android, UMP" Value="0,0,0,0"/>
+            </OnPlatform>
+        </StackLayout.Padding>
+        <BoxView BackgroundColor="BurlyWood" 
+                 Opacity="{Binding Value}"/>
+        <Label  Text="{Binding Value,
+                StringFormat= 'Value is {0:F0}'}"
+                FontSize="30"
+                Opacity="{Binding Value}"/>
+        <Slider Maximum="100"
+                x:Name="slider"
+                BackgroundColor="violet"/>
+    </StackLayout>
+
+</ContentPage>
