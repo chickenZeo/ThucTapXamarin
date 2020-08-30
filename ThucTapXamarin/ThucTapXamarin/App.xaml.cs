@@ -10,7 +10,7 @@ namespace ThucTapXamarin
         {
             InitializeComponent();
 
-            MainPage = new Greeter();
+            MainPage = new RelativeLayout_Ex();
         }
 
         protected override void OnStart()
