@@ -1,0 +1,42 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage BackgroundImageSource="wp4759213.png"
+             xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="ThucTapXamarin.AbsLayoutEx2">
+    <AbsoluteLayout>
+     
+        <Image AbsoluteLayout.LayoutBounds="0,0,1,1"
+               AbsoluteLayout.LayoutFlags="All"
+               Source="bg.jpg"
+               Aspect="AspectFill" />
+        <Label AbsoluteLayout.LayoutBounds="0.5,20"
+               AbsoluteLayout.LayoutFlags="XProportional"
+               Text="Relax"
+               FontSize="30"
+               TextColor="#fff"/>
+        <BoxView BackgroundColor="Black"
+                 Opacity="0.5"
+                 AbsoluteLayout.LayoutBounds="0,1,1,100"
+                 AbsoluteLayout.LayoutFlags="WidthProportional,PositionProportional" />
+        <StackLayout Padding="30"
+                     AbsoluteLayout.LayoutBounds="0,1,1,100"
+                     AbsoluteLayout.LayoutFlags="WidthProportional,PositionProportional"
+                     Orientation="Horizontal">
+            <Label Text="Profile"
+                   TextColor="White"
+                   FontSize="15"
+                   HorizontalOptions="Center"
+                   VerticalOptions="Center"/>
+            <Label Text="Meditate"
+                   TextColor="White"
+                   FontSize="15"
+                   HorizontalOptions="CenterAndExpand"
+                   VerticalOptions="Center"/>
+            <Label Text="Themes"
+                   TextColor="White"
+                   FontSize="15"
+                   HorizontalOptions="Center"
+                   VerticalOptions="Center"/>
+        </StackLayout>
+    </AbsoluteLayout>
+</ContentPage>

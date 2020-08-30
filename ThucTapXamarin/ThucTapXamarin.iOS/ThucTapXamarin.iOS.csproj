@@ -133,4 +133,7 @@
       <Name>ThucTapXamarin</Name>
     </ProjectReference>
   </ItemGroup>
+  <ItemGroup>
+    <BundleResource Include="Resources\bg.jpg" />
+  </ItemGroup>
 </Project>
