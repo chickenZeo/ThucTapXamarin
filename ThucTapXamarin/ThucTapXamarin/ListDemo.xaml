@@ -1,0 +1,39 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="ThucTapXamarin.ListDemo">
+    <StackLayout>
+        <SearchBar Placeholder="Search..." TextChanged="SearchBar_TextChanged"/>
+        <ListView x:Name="listView"
+                  IsPullToRefreshEnabled="True"
+                  Refreshing="listView_Refreshing">
+            <ListView.ItemTemplate>
+                <DataTemplate>
+                    <!--<ViewCell>
+                    <StackLayout Orientation="Horizontal" Padding="5">
+                        <Image Source="{Binding ImageUrl}" WidthRequest="50"
+                               HeightRequest="50"/>
+                        <StackLayout HorizontalOptions="StartAndExpand">
+                            <Label Text="{Binding Name}" TextColor="Black"/>
+                            <Label Text="{Binding Status}" TextColor="Blue" />
+                        </StackLayout>
+                        <Button Text="Follow"/>
+                    </StackLayout>
+                </ViewCell>-->
+                    <TextCell Text="{Binding Name}"
+                              Detail="{Binding Status}">
+                        <TextCell.ContextActions>
+                            <MenuItem Text="Call"
+                                      CommandParameter="{Binding .}"
+                                      Clicked="Call_Clicked" />
+                            <MenuItem Text="Delete"
+                                      CommandParameter="{Binding .}"
+                                      Clicked="Delete_Clicked"
+                                      IsDestructive="True" />
+                        </TextCell.ContextActions>
+                    </TextCell>
+                </DataTemplate>
+            </ListView.ItemTemplate>
+        </ListView>
+    </StackLayout>
+</ContentPage>

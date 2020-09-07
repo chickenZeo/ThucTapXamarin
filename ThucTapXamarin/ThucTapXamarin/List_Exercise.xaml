@@ -1,0 +1,41 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="ThucTapXamarin.List_Exercise">
+    <StackLayout>
+        <StackLayout.Padding>
+            <OnPlatform x:TypeArguments="Thickness">
+                <On Platform="iOS"
+                    Value="0,20,0,0" />
+                <On Platform="Android"
+                    Value="0,0,0,0" />
+            </OnPlatform>
+        </StackLayout.Padding>
+        <SearchBar Placeholder="Search..."
+                   TextChanged="SearchBar_TextChanged" />
+        <ListView IsPullToRefreshEnabled="True"
+                  Refreshing="ListView_Refreshing"
+                  IsGroupingEnabled="True"
+                  GroupDisplayBinding="{Binding Title}"
+                  x:Name="listView">
+            <ListView.ItemTemplate>
+                <DataTemplate>
+                    <TextCell Text="{Binding Location}">
+                        <TextCell.Detail>
+                            <MultiBinding StringFormat="{} {0:dd/MM/yyyy} - {1:dd/MM/yyyy}">
+                                <Binding Path="CheckIn" />
+                                <Binding Path="CheckOut" />
+                            </MultiBinding>
+                        </TextCell.Detail>
+                        <TextCell.ContextActions>
+                            <MenuItem Text="Delete"
+                                      IsDestructive="True"
+                                      CommandParameter="{Binding .}"
+                                      Clicked="Delete_Clicked" />
+                        </TextCell.ContextActions>
+                    </TextCell>
+                </DataTemplate>
+            </ListView.ItemTemplate>
+        </ListView>
+    </StackLayout>
+</ContentPage>
