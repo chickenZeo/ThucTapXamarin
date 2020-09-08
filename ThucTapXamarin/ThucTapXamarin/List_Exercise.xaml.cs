@@ -16,7 +16,6 @@ namespace ThucTapXamarin
     public partial class List_Exercise : ContentPage
     {
         public ObservableCollection<SearchGroup> SearchGroups { get; set; }
-        //public ObservableCollection<Search> Searches { get; set; }
         public List_Exercise()
         {
             InitializeComponent();
@@ -43,12 +42,9 @@ namespace ThucTapXamarin
                 return SearchGroups;
             else
             {
-                //var tmpSearchGroups = SearchGroups;
                 var results = new ObservableCollection<SearchGroup>();
                 foreach (var item in SearchGroups)
                 {
-                    //var abc = item as ObservableCollection<Search>;
-                    //var bbb = abc.Where(x => x.Location.Contains(filler));
                     var searchResult = item.Where(x => x.Location.ToLower().Contains(filler.ToLower()));
                     results.Add(new SearchGroup(item.Title, new ObservableCollection<Search>(searchResult)));
                 }
@@ -68,12 +64,10 @@ namespace ThucTapXamarin
 
         private void Delete_Clicked(object sender, EventArgs e)
         {
-
-
+            var deleteSearch = (sender as MenuItem).CommandParameter as Search;
+            foreach (var item in SearchGroups)
+                item.Remove(deleteSearch);
         }
-
     }
-
-
 }
 
