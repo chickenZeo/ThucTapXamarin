@@ -10,7 +10,11 @@ namespace ThucTapXamarin
         {
             InitializeComponent();
 
-            MainPage = new Greeter();
+            MainPage = new NavigationPage(new WelcomePage()) { 
+                BarBackgroundColor = Color.Olive,
+                BarTextColor = Color.White
+            };
+            
         }
 
         protected override void OnStart()
