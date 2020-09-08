@@ -15,8 +15,8 @@ namespace ThucTapXamarin
     [XamlCompilation(XamlCompilationOptions.Compile)]
     public partial class List_Exercise : ContentPage
     {
-        public ObservableCollection<SearchGroup> Searches { get; set; }
-        public ObservableCollection<Search> LSearches { get; set; }
+        public ObservableCollection<SearchGroup> SearchGroups { get; set; }
+        //public ObservableCollection<Search> Searches { get; set; }
         public List_Exercise()
         {
             InitializeComponent();
@@ -24,38 +24,51 @@ namespace ThucTapXamarin
         }
         private IEnumerable<SearchGroup> GetData()
         {
-            LSearches = new ObservableCollection<Search>
+            var searches = new ObservableCollection<Search>
             {
                 new Search(1,"Ha Noi,Viet Nam",DateTime.Parse("2020/06/05"),DateTime.Parse("2020/06/08")),
                 new Search(3,"Ho Chi Minh,Viet Nam",DateTime.Parse("2020/04/20"),DateTime.Parse("2020/04/25")),
-                new Search(2,"West Hollywood,CA,United States",DateTime.Parse("2020/02/05"),DateTime.Parse("2020/02/08"))
+                new Search(2,"West Kollywood,CA,United States",DateTime.Parse("2020/02/05"),DateTime.Parse("2020/02/08"))
             };
-            Searches = new ObservableCollection<SearchGroup>{
-                new SearchGroup("Recent searches", LSearches)
+            SearchGroups = new ObservableCollection<SearchGroup>{
+                new SearchGroup("Recent searches", searches),
             };
-            return Searches;
+            return SearchGroups;
         }
-       
+
         // Search by Loaction
-        private IEnumerable<Search> GetSearches(string filler = null) {
+        private IEnumerable<SearchGroup> GetSearches(string filler = null)
+        {
             if (String.IsNullOrEmpty(filler))
-                return LSearches;
-            return LSearches.Where(x => x.Location.StartsWith(filler));
-        } 
+                return SearchGroups;
+            else
+            {
+                //var tmpSearchGroups = SearchGroups;
+                var results = new ObservableCollection<SearchGroup>();
+                foreach (var item in SearchGroups)
+                {
+                    //var abc = item as ObservableCollection<Search>;
+                    //var bbb = abc.Where(x => x.Location.Contains(filler));
+                    var searchResult = item.Where(x => x.Location.ToLower().Contains(filler.ToLower()));
+                    results.Add(new SearchGroup(item.Title, new ObservableCollection<Search>(searchResult)));
+                }
+                return results;
+            }
+        }
         private void SearchBar_TextChanged(object sender, TextChangedEventArgs e)
         {
-           listView.ItemsSource = GetSearches(e.NewTextValue);
+            listView.ItemsSource = GetSearches(e.NewTextValue);
         }
 
         private void ListView_Refreshing(object sender, EventArgs e)
         {
-            listView.ItemsSource = Searches;
+            listView.ItemsSource = SearchGroups;
             listView.EndRefresh();
         }
 
         private void Delete_Clicked(object sender, EventArgs e)
         {
-            
+
 
         }
 
