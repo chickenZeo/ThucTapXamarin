@@ -15,45 +15,32 @@ namespace ThucTapXamarin
     [XamlCompilation(XamlCompilationOptions.Compile)]
     public partial class List_Exercise : ContentPage
     {
+        private SearchService _searchService;
         public ObservableCollection<SearchGroup> SearchGroups { get; set; }
         public List_Exercise()
         {
+            _searchService = new SearchService();
             InitializeComponent();
             listView.ItemsSource = GetData();
         }
         private IEnumerable<SearchGroup> GetData()
         {
-            var searches = new ObservableCollection<Search>
-            {
-                new Search(1,"Ha Noi,Viet Nam",DateTime.Parse("2020/06/05"),DateTime.Parse("2020/06/08")),
-                new Search(3,"Ho Chi Minh,Viet Nam",DateTime.Parse("2020/04/20"),DateTime.Parse("2020/04/25")),
-                new Search(2,"West Kollywood,CA,United States",DateTime.Parse("2020/02/05"),DateTime.Parse("2020/02/08"))
-            };
             SearchGroups = new ObservableCollection<SearchGroup>{
-                new SearchGroup("Recent searches", searches),
+                new SearchGroup("Recent searches", (ObservableCollection<Search>)_searchService.GetSearches()),
             };
             return SearchGroups;
         }
 
-        // Search by Loaction
-        private IEnumerable<SearchGroup> GetSearches(string filler = null)
-        {
-            if (String.IsNullOrEmpty(filler))
-                return SearchGroups;
-            else
-            {
-                var results = new ObservableCollection<SearchGroup>();
-                foreach (var item in SearchGroups)
-                {
-                    var searchResult = item.Where(x => x.Location.ToLower().Contains(filler.ToLower()));
-                    results.Add(new SearchGroup(item.Title, new ObservableCollection<Search>(searchResult)));
-                }
-                return results;
-            }
-        }
         private void SearchBar_TextChanged(object sender, TextChangedEventArgs e)
         {
-            listView.ItemsSource = GetSearches(e.NewTextValue);
+            var searchResults = new ObservableCollection<SearchGroup>();
+            
+            foreach(var item in SearchGroups)
+            {
+                var getResults = _searchService.GetSearches(e.NewTextValue);
+                searchResults.Add(new SearchGroup(item.Title, new ObservableCollection<Search>(getResults)));
+            }
+            listView.ItemsSource = searchResults;
         }
 
         private void ListView_Refreshing(object sender, EventArgs e)
@@ -65,8 +52,13 @@ namespace ThucTapXamarin
         private void Delete_Clicked(object sender, EventArgs e)
         {
             var deleteSearch = (sender as MenuItem).CommandParameter as Search;
+            var listTmp = new ObservableCollection<SearchGroup>();
             foreach (var item in SearchGroups)
-                item.Remove(deleteSearch);
+            {
+                var delete = _searchService.DeleteSearch(deleteSearch.Id, item);
+                listTmp.Add(new SearchGroup (item.Title, new ObservableCollection<Search>(delete)));
+            }
+            listView.ItemsSource = listTmp;
         }
     }
 }
