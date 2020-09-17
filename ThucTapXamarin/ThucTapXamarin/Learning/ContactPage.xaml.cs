@@ -11,7 +11,7 @@ using ThucTapXamarin.Models;
 namespace ThucTapXamarin
 {
     [XamlCompilation(XamlCompilationOptions.Compile)]
-    public partial class ContactPage : ContentPage
+    public partial class ContactPage : MasterDetailPage
     {
         public ContactPage()
         {
@@ -24,13 +24,11 @@ namespace ThucTapXamarin
             listView.ItemsSource = listContacts;
         }
 
-        async private void listView_ItemSelected(object sender, SelectedItemChangedEventArgs e)
+        private void listView_ItemSelected(object sender, SelectedItemChangedEventArgs e)
         {
-            if (e.SelectedItem == null)
-                return;
             var contact = e.SelectedItem as Contact;
-            await Navigation.PushAsync(new ContactDetail(contact));
-            listView.SelectedItem = null;
+            Detail = new NavigationPage(new ContactDetail(contact));
+            IsPresented = false;
         }
     }
 }

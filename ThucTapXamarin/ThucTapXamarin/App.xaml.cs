@@ -10,11 +10,7 @@ namespace ThucTapXamarin
         {
             InitializeComponent();
 
-            MainPage = new NavigationPage(new WelcomePage()) { 
-                BarBackgroundColor = Color.Olive,
-                BarTextColor = Color.White
-            };
-            
+            MainPage = new NavigationPage(new Bai6_InstagramAppPage());
         }
 
         protected override void OnStart()

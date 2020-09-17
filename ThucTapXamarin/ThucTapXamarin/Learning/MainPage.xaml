@@ -1,0 +1,43 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<CarouselPage xmlns="http://xamarin.com/schemas/2014/forms"
+            xmlns:local="clr-namespace:ThucTapXamarin"
+            xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+            x:Class="ThucTapXamarin.MainPage">
+    <!--<local:ContactPage Title="Contact214" IconImageSource="icon.png" />-->
+    <!--<NavigationPage  Title="Page1"
+                     IconImageSource="icon.png">
+        <x:Arguments>
+            --><!--<local:IntroductionPage />--><!--
+            <ContentPage Title="abc">
+                <Label Text="Content page 1" />
+            </ContentPage>
+        </x:Arguments>
+    </NavigationPage>-->
+    <ContentPage  >
+        <StackLayout  HorizontalOptions="Center"
+                      VerticalOptions="Center">
+            <Label   
+                     Text="Content page 1" />
+            <Button  
+                      Text="Click me"
+                      Clicked="Button_Clicked" />
+        </StackLayout>
+    </ContentPage> 
+    <ContentPage>
+        <ContentPage.ToolbarItems>
+            <ToolbarItem Text="+"
+                         Clicked="ToolbarItem_Clicked"
+                         Order="Primary" />
+            <ToolbarItem Text="++"
+                         Clicked="ToolbarItem_Clicked"
+                         Order="Secondary" />
+            <ToolbarItem Text="//"
+                         Clicked="ToolbarItem_Clicked"
+                         Order="Secondary" />
+            <ToolbarItem Text="//"
+                         Clicked="ToolbarItem_Clicked"
+                         Order="Default" />
+        </ContentPage.ToolbarItems>
+    </ContentPage>
+   
+</CarouselPage>

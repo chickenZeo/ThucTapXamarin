@@ -5,7 +5,7 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="ThucTapXamarin.IntroductionPage">
     <StackLayout HorizontalOptions="Center" VerticalOptions="Center">
-        <Label Text="Introduction"
+        <Label Text="Introduction1234"
                HorizontalOptions="Center" />
         <Button Text="Back"
                 HorizontalOptions="Center"
