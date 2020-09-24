@@ -1,0 +1,45 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage  xmlns="http://xamarin.com/schemas/2014/forms"
+              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+              xmlns:sys="clr-namespace:System;assembly=mscorlib"
+              xmlns:local="clr-namespace:ThucTapXamarin"
+              x:Class="ThucTapXamarin.DateTimePickerSamplePage">
+    <!--<StackLayout>
+        <DatePicker Format="dd/MM/yyyy"
+                    Date="{x:Static sys:DateTime.Today}" />
+        <TimePicker Time="13:00"/>
+
+    </StackLayout>-->
+    <TableView Intent="Form">
+        <TableRoot>
+            <TableSection Title="Basic">
+                <TextCell Text="Name"
+                          Detail="Thanh80"></TextCell>
+                <EntryCell Label="Title"
+                           Placeholder="eg Shopping"
+                           Keyboard="Text" />
+                <SwitchCell Text="Notifictions"
+                            On="True" />
+            </TableSection>
+
+            <TableSection Title="Date/time">
+                <SwitchCell Text="All-day"
+                            On="True" />
+                <local:DateCell Label="Start"/>
+                <local:DateCell Label="End"/>
+                <ViewCell Tapped="ViewCell_Tapped">
+                    <StackLayout Orientation="Horizontal"
+                                 Padding="15,5">
+                        <Label Text="Contact Method"
+                               VerticalOptions="Center" />
+                        <Label x:Name="contactMethod"
+                               VerticalOptions="Center"
+                               HorizontalOptions="EndAndExpand"
+                               Text="None"
+                               TextColor="Gray" />
+                    </StackLayout>
+                </ViewCell>
+            </TableSection>
+        </TableRoot>
+    </TableView>
+</ContentPage>

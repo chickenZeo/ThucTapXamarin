@@ -1,0 +1,46 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage Padding="40"
+             xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="ThucTapXamarin.SampleCodePage">
+    <StackLayout>
+        <!--<Switch VerticalOptions="Start"
+                x:Name="switch"
+                IsToggled="True"/>
+        <Label Text="Test Switch" 
+               IsVisible="{Binding Source={x:Reference switch}, Path=IsToggled}"/>
+
+        <Slider x:Name="slider" 
+                Maximum="255"
+                Minimum="10"
+                Value="50"
+                BackgroundColor="Green"/>
+        <Label Text="{Binding Source={x:Reference slider}, Path=Value, StringFormat='{0:n0}'}" />
+
+        <Stepper x:Name="stepper"
+                 Maximum="100"
+                 Minimum="10"
+                 Increment="2" />
+        <Label Text="{Binding Source={x:Reference stepper}, Path=Value}" />-->
+
+        <!--<Entry Keyboard="Numeric"
+               Placeholder="Phone" />
+        <Entry Keyboard="Chat"
+               Placeholder="Email" />
+        <Entry IsPassword="True" TextChanged="Entry_TextChanged" />
+        <Label x:Name="label" />-->
+
+        <!--<Editor BackgroundColor="BlueViolet" 
+                VerticalOptions=""/>-->
+
+        <Picker Title="Contact Method"
+                x:Name="contacMethods"
+                SelectedIndexChanged="Picker_SelectedIndexChanged">
+            <!-- Move to code behind
+                <Picker.Items>
+                <x:String>SMS</x:String>
+                <x:String>Email</x:String>
+            </Picker.Items>-->
+        </Picker>
+    </StackLayout>
+</ContentPage>

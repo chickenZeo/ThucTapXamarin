@@ -1,6 +1,7 @@
 ﻿using System;
 using Xamarin.Forms;
 using Xamarin.Forms.Xaml;
+using ThucTapXamarin.Exercise;
 
 namespace ThucTapXamarin
 {
@@ -10,7 +11,7 @@ namespace ThucTapXamarin
         {
             InitializeComponent();
 
-            MainPage = new Greeter();
+            MainPage = new NavigationPage(new ContactPage());
         }
 
         protected override void OnStart()

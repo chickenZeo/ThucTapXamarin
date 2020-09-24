@@ -1,0 +1,12 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ViewCell xmlns="http://xamarin.com/schemas/2014/forms"
+          xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+          x:Class="ThucTapXamarin.DateCell">
+    <StackLayout Padding="15,0"
+                 Orientation="Horizontal">
+        <Label VerticalOptions="Center"
+               HorizontalOptions="StartAndExpand"
+               Text="{Binding Label}" />
+        <DatePicker />
+    </StackLayout>
+</ViewCell>
