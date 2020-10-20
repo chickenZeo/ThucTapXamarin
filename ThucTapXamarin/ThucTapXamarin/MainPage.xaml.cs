@@ -1,9 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿
 using Xamarin.Forms;
 
 namespace ThucTapXamarin
@@ -13,6 +8,17 @@ namespace ThucTapXamarin
         public MainPage()
         {
             InitializeComponent();
+            BindingContext = Application.Current;
+            //if (Application.Current.Properties.ContainsKey("Title"))
+            //    title.Text = (string)Application.Current.Properties["Title"];
+            //if (Application.Current.Properties.ContainsKey("NotificationsEnabled"))
+            //    notificationsEnabled.On = (bool)Application.Current.Properties["NotificationsEnabled"];
+           
         }
+        //private void OnChanged(object sender, EventArgs e)
+        //{
+        //    Application.Current.Properties["Title"] = title.Text;
+        //    Application.Current.Properties["NotificationsEnabled"] = notificationsEnabled.On;
+        //}
     }
 }

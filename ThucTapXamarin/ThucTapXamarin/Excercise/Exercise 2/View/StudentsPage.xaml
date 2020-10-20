@@ -1,0 +1,25 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage Title="List students" xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="ThucTapXamarin.Excercise.Exercise_2.View.StudentsPage">
+    
+    <StackLayout>
+        <SearchBar Placeholder="Search by status..."
+                   TextChanged="SearchBar_TextChanged" />
+        <ActivityIndicator IsRunning="{Binding IsSearching}" />
+        <Frame Padding="20"
+               IsVisible="false"
+               HasShadow="false">
+            <Label Text="Can't find anything" />
+        </Frame>
+        <ListView x:Name="listStudents">
+            <ListView.ItemTemplate>
+                <DataTemplate>
+                    <ImageCell Text="{Binding Content}"
+                               Detail="{Binding Status}"
+                                />
+                </DataTemplate>
+            </ListView.ItemTemplate>
+        </ListView>
+    </StackLayout>
+</ContentPage>

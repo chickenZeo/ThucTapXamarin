@@ -1,0 +1,28 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage Title="Contacts"
+             xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="ThucTapXamarin.ContactPage">
+    <ContentPage.ToolbarItems>
+        <ToolbarItem Text="Add"
+                     Clicked="OnAddBtn_Clicked" />
+    </ContentPage.ToolbarItems>
+    <ListView x:Name="listViewContacts"
+              ItemSelected="listViewContacts_ItemSelected_1">
+        <ListView.ItemTemplate>
+            <DataTemplate>
+                <ViewCell>
+                    <Label Text="{Binding FullName}"
+                           Padding="15,0"
+                           VerticalOptions="Center" />
+                    <ViewCell.ContextActions>
+                        <MenuItem Text="Delete"
+                                  IsDestructive="True"
+                                  CommandParameter="{Binding .}"
+                                  Clicked="OnDeleteBtn_Clicked" />
+                    </ViewCell.ContextActions>
+                </ViewCell>
+            </DataTemplate>
+        </ListView.ItemTemplate>
+    </ListView>
+</ContentPage>
